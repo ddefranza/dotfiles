@@ -189,4 +189,6 @@ augroup PackBootstrap | autocmd!
               \ 'https://github.com/junegunn/fzf.vim', 'start')
   autocmd VimEnter * call s:ensure_plugin('repl', 
               \ 'https://github.com/sillybun/vim-repl', 'start')
+  autocmd VimEnter * call s:ensure_plugin('vim-fugitive',
+              \ 'https://github.com/tpope/vim-fugitive', 'start')
 augroup END
