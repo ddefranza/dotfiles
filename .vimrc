@@ -97,6 +97,7 @@ let g:ale_linters = {
             \ 'r':          ['lintr'],
             \ 'tex':        ['lacheck'],
             \ 'markdown':   ['marksman'],
+            \ 'html':       ['tidy'],
             \ }
 
 "" Automagically fix code styling
