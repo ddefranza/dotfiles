@@ -145,41 +145,6 @@ noremap <leader>g :Rg! <CR>     " Invoke ripgrep search with leader key
 " Code templates
 :autocmd BufNewFile  *.r 0r ~/.vim/templates/skeleton.r
 
-" Load plugins (download from GitHub if missing)...
-" Installs a plugin into pack/{vendor}/{start|opt}/{name} if it's missing.
-if !exists('*s:ensure_plugin')
-  function! s:ensure_plugin(name, repo, where) abort
-    let l:pack_root = expand('~/.vim/pack/git-plugins/' . (a:where ==# 'opt' ? 'opt' : 'start'))
-    let l:plug_dir  = l:pack_root . '/' . a:name
-
-    if !isdirectory(l:plug_dir)
-      if !executable('git')
-        echohl ErrorMsg | echom 'git not found; cannot install ' . a:name | echohl None
-        return
-      endif
-      call mkdir(l:pack_root, 'p')
-      let l:cmd = printf('git clone --depth 1 %s %s',
-            \ shellescape(a:repo), shellescape(l:plug_dir))
-      echom 'Installing ' . a:name . ' ...'
-      let l:out = system(l:cmd)
-      if v:shell_error
-        echohl ErrorMsg | echom 'Failed to install ' . a:name . ': ' . l:out | echohl None
-        return
-      endif
-      " Generate helptags if the plugin ships docs
-      if isdirectory(l:plug_dir . '/doc')
-        execute 'silent! helptags ' . fnameescape(l:plug_dir . '/doc')
-      endif
-      echom 'Installed ' . a:name
-    endif
-
-    " Load optional packages immediately
-    if a:where ==# 'opt'
-      execute 'packadd ' . a:name
-    endif
-  endfunction
-endif
-
 augroup PackBootstrap | autocmd!
   autocmd VimEnter * call s:ensure_plugin('ale', 
               \ 'https://github.com/dense-analysis/ale', 'start')
