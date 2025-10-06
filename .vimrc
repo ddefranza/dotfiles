@@ -145,13 +145,8 @@ noremap <leader>g :Rg! <CR>     " Invoke ripgrep search with leader key
 " Code templates
 :autocmd BufNewFile  *.r 0r ~/.vim/templates/skeleton.r
 
-augroup PackBootstrap | autocmd!
-  autocmd VimEnter * call s:ensure_plugin('ale', 
-              \ 'https://github.com/dense-analysis/ale', 'start')
-  autocmd VimEnter * call s:ensure_plugin('fzf.vim', 
-              \ 'https://github.com/junegunn/fzf.vim', 'start')
-  autocmd VimEnter * call s:ensure_plugin('repl', 
-              \ 'https://github.com/sillybun/vim-repl', 'start')
-  autocmd VimEnter * call s:ensure_plugin('vim-fugitive',
-              \ 'https://github.com/tpope/vim-fugitive', 'start')
-augroup END
+"" Load all plugins on start
+for dir in split(glob('~/.vim/pack/git-plugins/start/*'), '\n')
+    let plugin = fnamemodify(dir, ':t')
+    exec 'packadd! ' . plugin
+endfor
