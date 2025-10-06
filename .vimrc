@@ -19,9 +19,7 @@ set nobackup                    " Don't create backups of working files
 set noswapfile                  " Don't create swap files
 set noundofile                  " Don't create persistent undo files
 
-colorscheme habamax             " Set the color scheme for Vim
-set t_Co=256                    " Use 256 colors
-set term=xterm-256color         " Use 256 colors in the terminal
+set t_Co=16                     " Use 256 colors
 
 let &t_SI.="\e[5 q"             " Use blinking vertical bar cursor for insert mode
 let &t_SR.="\e[4 q"             " Use solid underscore cursor for replace mode
@@ -113,10 +111,10 @@ let g:ale_fix_on_save=1         " Always fix code on save
 let g:repl_program = {
             \ 'python':     'ipython',
             \ 'r':          'R',
-            \ 'sh':         'zsh',
-            \ 'vim':        'zsh',
-            \ 'default':    'zsh',
-            \ '':           'zsh',
+            \ 'sh':         'bash',
+            \ 'vim':        'bash',
+            \ 'default':    'bash',
+            \ '':           'bash',
             \ }
 
 "" Toggle REPL with leader key
