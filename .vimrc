@@ -121,7 +121,7 @@ let g:repl_program = {
 noremap <leader>r :REPLToggle <CR>
 
 " fzf-vim
-set rtp+=/opt/homebrew/opt/fzf      " Enable search with fzf
+set rtp+=/usr/bin/fzf      " Enable search with fzf
 
 "" Build a quickfix list from results
 function! s:build_quickfix_list(lines)
