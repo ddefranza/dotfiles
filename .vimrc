@@ -11,7 +11,7 @@ language messages en_US.utf-8   " Set the language and locale
 set fileformat=unix             " Use linux line endings when saving
 set fileformats=unix,dos        " Try to read files as unix, fallback to dos
 
-set shell=/bin/zsh              " Use zsh in the terminal
+set shell=/bin/bash             " Use bash in the terminal
 set autochdir                   " Change working directory to open buffer
 set hidden                      " Allow unsaved buffers
 
